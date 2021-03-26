@@ -2,7 +2,7 @@
 # coding: utf-8
 
 # In[1]:
-
+def scrape():
 
 #imports
 import pandas as pd
