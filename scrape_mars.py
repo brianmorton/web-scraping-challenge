@@ -164,7 +164,7 @@ Cerebus_url = soupurl.find(class_ = 'thumb')['href']
 browser.quit()
 
 
-print(Cerebus_url)    
+   
 
 
 # In[ ]:
@@ -189,7 +189,7 @@ Schiaparelli_url = soupurl.find(class_ = 'thumb')['href']
 browser.quit()
 
 
-print(Cerebus_url)    
+  
 
 
 # In[ ]:
@@ -214,7 +214,7 @@ Syrtis_url = soupurl.find(class_ = 'thumb')['href']
 browser.quit()
 
 
-print(Cerebus_url)    
+   
 
 
 # In[ ]:
@@ -239,7 +239,7 @@ Valles_url = soupurl.find(class_ = 'thumb')['href']
 browser.quit()
 
 
-print(Cerebus_url)    
+    
 
 
 # In[26]:
@@ -254,8 +254,33 @@ Valles_url =   'https://astropedia.astrogeology.usgs.gov/download/Mars/Viking/va
 
 #append above variables to list with dict object
 hemisphere_image_urls = []
-hemisphere_image_urls.append({'"title"':Cerebus_title, 'img_url':Cerebus_url})
-hemisphere_image_urls.append({'"title"':Schiaparelli_title, 'img_url':Schiaparelli_url})
-hemisphere_image_urls.append({'"title"':Syrtis_Major_title, 'img_url':Syrtis_url})
-hemisphere_image_urls.append({'"title"':Valles_Marineris_title, 'img_url':Valles_url})
+hemisphere_image_urls.append({'title':Cerebus_title, 'img_url':Cerebus_url})
+hemisphere_image_urls.append({'title':Schiaparelli_title, 'img_url':Schiaparelli_url})
+hemisphere_image_urls.append({'title':Syrtis_Major_title, 'img_url':Syrtis_url})
+hemisphere_image_urls.append({'title':Valles_Marineris_title, 'img_url':Valles_url})
 
+
+
+
+#place all variables above into single dict object
+#var names
+newstitle
+newsdescription
+
+featured_image_url
+
+html_table
+
+hemisphere_image_urls
+
+
+mars_dict = []
+mars_dict.append({'newstitle' :newstitle })
+mars_dict.append({'newsdescription' :newsdescription })
+mars_dict.append({'featured_image_url' :featured_image_url })
+mars_dict.append({'html_table' :html_table })
+mars_dict.append({'hemisphere_image_urls' :hemisphere_image_urls })
+
+
+
+return mars_dict
