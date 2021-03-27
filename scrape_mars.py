@@ -21,7 +21,7 @@ def scrape():
 #soup set up
 
     url1 = 'https://mars.nasa.gov/news/'
-    html = browser.html(url1)
+    html = browser.visit(url1)
     soup = bs(html, 'html.parser')
 
 
@@ -51,7 +51,7 @@ def scrape():
 #Launch splinter and click in
     url2 = 'https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/index.html'
 
-    browser.html(url2)
+    browser.visit(url2)
     browser.links.find_by_partial_text('FULL IMAGE').click()
 
 #b-soup request object                             
@@ -109,7 +109,7 @@ def scrape():
 
 #b-soup to pull titles from images
     url4 = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
-    html = browser.html(url4)
+    html = browser.visit(url4)
     soup3 = bs(html, 'html.parser')
           
     hemindex = soup3.find_all('h3')
