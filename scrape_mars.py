@@ -2,15 +2,16 @@
 # coding: utf-8
 
 # In[1]:
+#imports
+import pandas as pd
+import os
+import requests
+from bs4 import BeautifulSoup as bs
+from splinter import Browser
+from webdriver_manager.chrome import ChromeDriverManager
 def scrape():
 
-#imports
-    import pandas as pd
-    import os
-    import requests
-    from bs4 import BeautifulSoup as bs
-    from splinter import Browser
-    from webdriver_manager.chrome import ChromeDriverManager
+
 
 
 # In[11]:
@@ -20,7 +21,7 @@ def scrape():
 #soup set up
 
     url1 = 'https://mars.nasa.gov/news/'
-    html = requests.get(url1).text
+    html = browser.html(url1)
     soup = bs(html, 'html.parser')
 
 
@@ -50,7 +51,7 @@ def scrape():
 #Launch splinter and click in
     url2 = 'https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/index.html'
 
-    browser.visit(url2)
+    browser.html(url2)
     browser.links.find_by_partial_text('FULL IMAGE').click()
 
 #b-soup request object                             
@@ -108,7 +109,7 @@ def scrape():
 
 #b-soup to pull titles from images
     url4 = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
-    html = requests.get(url4).text
+    html = browser.html(url4)
     soup3 = bs(html, 'html.parser')
           
     hemindex = soup3.find_all('h3')
@@ -132,104 +133,104 @@ def scrape():
 # In[27]:
 
 
-#Splinter portion section 4
-    executable_path = {'executable_path': ChromeDriverManager().install()}
-    browser = Browser('chrome', **executable_path, headless=False)
-    url4 = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
+# #Splinter portion section 4
+#     executable_path = {'executable_path': ChromeDriverManager().install()}
+#     browser = Browser('chrome', **executable_path, headless=False)
+#     url4 = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
 
 
-    browser.visit(url4)
-    browser.links.find_by_partial_text('Cerberus ').click()
-#browser.links.find_by_partial_text('Sample').click()
+#     browser.visit(url4)
+#     browser.links.find_by_partial_text('Cerberus ').click()
+# #browser.links.find_by_partial_text('Sample').click()
 
-#b-soup request object                             
-    html = browser.html
+# #b-soup request object                             
+#     html = browser.html
 
-#pass request object
-    soupurl = bs(html, 'lxml')
+# #pass request object
+#     soupurl = bs(html, 'lxml')
 
-                    #element to search for
-    Cerebus_url = soupurl.find(class_ = 'thumb')['href']
+#                     #element to search for
+#     Cerebus_url = soupurl.find(class_ = 'thumb')['href']
 
 
 
-#close browser object
-    browser.quit()
+# #close browser object
+#     browser.quit()
 
 
    
 
 
-# In[ ]:
+# # In[ ]:
 
 
-    browser.visit(url4)
-    browser.links.find_by_partial_text('Schiaparelli ').click()
-#browser.links.find_by_partial_text('Sample').click()
+#     browser.visit(url4)
+#     browser.links.find_by_partial_text('Schiaparelli ').click()
+# #browser.links.find_by_partial_text('Sample').click()
 
-#b-soup request object                             
-    html = browser.html
+# #b-soup request object                             
+#     html = browser.html
 
-#pass request object
-    soupurl = bs(html, 'lxml')
+# #pass request object
+#     soupurl = bs(html, 'lxml')
 
-                    #element to search for
-    Schiaparelli_url = soupurl.find(class_ = 'thumb')['href']
+#                     #element to search for
+#     Schiaparelli_url = soupurl.find(class_ = 'thumb')['href']
 
 
 
-#close browser object
-    browser.quit()
+# #close browser object
+#     browser.quit()
 
 
   
 
 
-# In[ ]:
+# # In[ ]:
 
 
-    browser.visit(url4)
-    browser.links.find_by_partial_text('Syrtis Major ').click()
-#browser.links.find_by_partial_text('Sample').click()
+#     browser.visit(url4)
+#     browser.links.find_by_partial_text('Syrtis Major ').click()
+# #browser.links.find_by_partial_text('Sample').click()
 
-#b-soup request object                             
-    html = browser.html
+# #b-soup request object                             
+#     html = browser.html
 
-#pass request object
-    soupurl = bs(html, 'lxml')
+# #pass request object
+#     soupurl = bs(html, 'lxml')
 
-                    #element to search for
-    Syrtis_url = soupurl.find(class_ = 'thumb')['href']
+#                     #element to search for
+#     Syrtis_url = soupurl.find(class_ = 'thumb')['href']
 
 
 
-#close browser object
-    browser.quit()
+# #close browser object
+#     browser.quit()
 
 
    
 
 
-# In[ ]:
+# # In[ ]:
 
 
-    browser.visit(url4)
-    browser.links.find_by_partial_text('Valles Marineris ').click()
-#browser.links.find_by_partial_text('Sample').click()
+#     browser.visit(url4)
+#     browser.links.find_by_partial_text('Valles Marineris ').click()
+# #browser.links.find_by_partial_text('Sample').click()
 
-#b-soup request object                             
-    html = browser.html
+# #b-soup request object                             
+#     html = browser.html
 
-#pass request object
-    soupurl = bs(html, 'lxml')
+# #pass request object
+#     soupurl = bs(html, 'lxml')
 
-                    #element to search for
-    Valles_url = soupurl.find(class_ = 'thumb')['href']
+#                     #element to search for
+#     Valles_url = soupurl.find(class_ = 'thumb')['href']
 
 
 
-#close browser object
-    browser.quit()
+# #close browser object
+#     browser.quit()
 
 
     
@@ -238,7 +239,7 @@ def scrape():
 # In[26]:
 
 
-###############hardcoded urls placeholders###############
+############### urls placeholders###############
     Cerebus_url = 'https://astropedia.astrogeology.usgs.gov/download/Mars/Viking/cerberus_enhanced.tif/full.jpg'
     Schiaparelli_url = 'https://astropedia.astrogeology.usgs.gov/download/Mars/Viking/schiaparelli_enhanced.tif/full.jpg'
     Syrtis_url =  'https://astropedia.astrogeology.usgs.gov/download/Mars/Viking/syrtis_major_enhanced.tif/full.jpg'
