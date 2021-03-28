@@ -11,13 +11,13 @@ from splinter import Browser
 from webdriver_manager.chrome import ChromeDriverManager
 def scrape():
 
-
-
-
 # In[11]:
 
-
 #Part 1
+# Setup splinter
+    executable_path = {'executable_path': ChromeDriverManager().install()}
+    browser = Browser('chrome', **executable_path, headless=False)
+    
 #soup set up
 
     url1 = 'https://mars.nasa.gov/news/'
@@ -26,9 +26,8 @@ def scrape():
 
 
 # In[12]:
-
-
 #part 1 Section 1
+
 #first news story headline variable storage
 
     newstitle = soup.find(class_ = "content_title" ).text.strip()
@@ -39,18 +38,20 @@ def scrape():
     newsdescription = newsdescription.text.strip()
     print(newsdescription)
 
-
+#close browser object
+    browser.quit()
 # In[21]:
 
-
 #Part 1 Section 2
+
 # Setup splinter
-    executable_path = {'executable_path': ChromeDriverManager().install()}
-    browser = Browser('chrome', **executable_path, headless=False)
-    featured = 'https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/'
+    #executable_path = {'executable_path': ChromeDriverManager().install()}
+    #browser = Browser('chrome', **executable_path, headless=False)
+    
+
 #Launch splinter and click in
     url2 = 'https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/index.html'
-
+    featured = 'https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/'
     browser.visit(url2)
     browser.links.find_by_partial_text('FULL IMAGE').click()
 
@@ -69,18 +70,9 @@ def scrape():
 
     print('featured_image_url print: ', featured_image_url)
 
-
-
-# tag: fancybox-image, fancybox-skin, fancybox-inner
-#featured_image_url = souptest.find(class_ = 'headerimage')['src']
-
 #close browser object
     browser.quit()
-
-
 # In[13]:
-
-
 #Part 1 Section 3
 
 ### Mars Facts
@@ -95,11 +87,9 @@ def scrape():
 # Use Pandas to convert the data to a HTML table string.
     html_table = dftable.to_html()
     html_table
-
+    print(html_table)
 
 # In[18]:
-
-
 #Part 1 Section 4
 
 ### Mars Hemispheres
@@ -267,6 +257,6 @@ def scrape():
     mars_dict.append({'Schiaparelli_title' : Schiaparelli_title, 'Schiaparelli_url' : Schiaparelli_url})
     mars_dict.append({'Syrtis_Major_title' : Syrtis_Major_title, 'Syrtis_url}' : Syrtis_url})
     mars_dict.append({'Valles_Marineris_title' : Valles_Marineris_title, 'Valles_url': Valles_url})
-
+    print(mars_dict)
 
     return mars_dict
