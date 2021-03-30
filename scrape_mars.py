@@ -13,12 +13,13 @@ def scrape():
 
 # In[11]:
 
-#Part 1
-# Setup splinter
+#Part 1 Setup
+
+# Splinter
     executable_path = {'executable_path': ChromeDriverManager().install()}
     browser = Browser('chrome', **executable_path, headless=False)
     
-#soup set up
+#beautiful soup set up
 
     url1 = 'https://mars.nasa.gov/news/'
     html = browser.visit(url1)
@@ -38,8 +39,7 @@ def scrape():
     newsdescription = newsdescription.text.strip()
     print(newsdescription)
 
-#close browser object
-    browser.quit()
+
 # In[21]:
 
 #Part 1 Section 2
@@ -59,7 +59,7 @@ def scrape():
     html = browser.html
 
 #pass request object
-    souptest = bs(html, 'lxml')
+    souptest = bs(html, 'html.parser')
 
 #insert div class to search
     ref = souptest.find(class_ = 'fancybox-image')['src']
